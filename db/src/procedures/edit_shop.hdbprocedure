@@ -4,7 +4,8 @@ PROCEDURE "edit_shop"(
     descr NVARCHAR(512)
   ) 
   LANGUAGE SQLSCRIPT AS 
-BEGIN IF name_of_shop != '' THEN
+BEGIN
+ IF name_of_shop != '' THEN
   UPDATE "SHOPS"
   SET "SHOP_NAME" = name_of_shop
   WHERE "ID" = shop_id;

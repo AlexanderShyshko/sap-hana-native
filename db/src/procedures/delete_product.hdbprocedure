@@ -1,0 +1,7 @@
+PROCEDURE "delete_product"(product_id int )
+   LANGUAGE SQLSCRIPT
+    AS
+BEGIN
+  DELETE FROM "PRODUCTS"
+  WHERE "ID" = product_id;  
+END
