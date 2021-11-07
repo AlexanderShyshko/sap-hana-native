@@ -1,0 +1,7 @@
+column table "SHOPS" (
+    "ID" INTEGER unique not null COMMENT 'Shop ID',
+    "NAME" NVARCHAR(50) COMMENT 'Shop name',
+    "DESCRIPTION" NVARCHAR(512) COMMENT 'Shop descritpion',
+    PRIMARY KEY ("ID")
+)
+COMMENT 'Shops'
