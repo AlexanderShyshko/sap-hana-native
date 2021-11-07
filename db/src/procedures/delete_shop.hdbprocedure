@@ -1,0 +1,6 @@
+PROCEDURE "delete_shop"(shop_id int) 
+  LANGUAGE SQLSCRIPT AS 
+BEGIN
+  DELETE FROM "SHOPS"
+  WHERE "ID" = shop_id;
+END

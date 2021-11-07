@@ -1,0 +1,17 @@
+PROCEDURE "edit_shop"(
+    shop_id INT,
+    name_of_shop NVARCHAR(50),
+    descr NVARCHAR(512)
+  ) 
+  LANGUAGE SQLSCRIPT AS 
+BEGIN IF name_of_shop != '' THEN
+  UPDATE "SHOPS"
+  SET "SHOP_NAME" = name_of_shop
+  WHERE "ID" = shop_id;
+END IF;
+IF descr != '' THEN
+UPDATE "SHOPS"
+SET "DESCRIPTION" = descr
+WHERE "ID" = shop_id;
+END IF;
+END

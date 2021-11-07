@@ -1,0 +1,6 @@
+PROCEDURE "add_shop"(name_of_shop NVARCHAR(50), descr NVARCHAR(512)) 
+  LANGUAGE SQLSCRIPT AS 
+BEGIN
+  INSERT INTO "SHOPS" ("SHOP_NAME", "DESCRIPTION")
+  VALUES(name_of_shop, descr);
+END
