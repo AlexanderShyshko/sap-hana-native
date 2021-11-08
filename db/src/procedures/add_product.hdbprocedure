@@ -1,7 +1,17 @@
-PROCEDURE "add_product"(name_of_product NVARCHAR(50), descr NVARCHAR(512), shop_id int )
-   LANGUAGE SQLSCRIPT
-  AS
+PROCEDURE "add_product"(
+    name_of_product NVARCHAR(50),
+    descr NVARCHAR(512),
+    shop_id int,
+    category_id int
+    
+  ) 
+  LANGUAGE SQLSCRIPT AS 
 BEGIN
-    INSERT INTO "PRODUCTS" ("PRODUCT_NAME", "DESCRIPTION", "SHOP_ID")
-    VALUES(name_of_product, descr, shop_id);
+  INSERT INTO "PRODUCTS" (
+      "PRODUCT_NAME",
+      "DESCRIPTION",
+      "SHOP_ID",
+      "CATEGORY_ID" 
+    )
+  VALUES(name_of_product, descr, shop_id, category_id);
 END

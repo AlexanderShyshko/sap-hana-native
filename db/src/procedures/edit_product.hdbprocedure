@@ -1,25 +1,25 @@
-PROCEDURE "edit_product"( 
+PROCEDURE "edit_product"(
     product_id INT,
     name_of_product NVARCHAR(50),
-    descr NVARCHAR(512), 
-    shop_id INT)
-   LANGUAGE SQLSCRIPT
-    AS
-BEGIN
-    IF name_of_product != '' THEN
-    UPDATE "PRODUCTS"
-    SET "PRODUCT_NAME" = name_of_product
-    WHERE "ID" = product_id;
-    END IF;
-    IF descr != '' THEN
-    UPDATE "PRODUCTS"
-    SET "DESCRIPTION" = descr
-    WHERE "ID" = product_id;
-    END IF;
-  
-    UPDATE "PRODUCTS"
-    SET "SHOP_ID" = shop_id
-    WHERE "ID" = product_id;
-
-
+    descr NVARCHAR(512),
+    shop_id INT,
+    category_id int
+  ) 
+  LANGUAGE SQLSCRIPT AS 
+BEGIN IF name_of_product != '' THEN
+  UPDATE "PRODUCTS"
+  SET "PRODUCT_NAME" = name_of_product
+  WHERE "ID" = product_id;
+END IF;
+IF descr != '' THEN
+UPDATE "PRODUCTS"
+SET "DESCRIPTION" = descr
+WHERE "ID" = product_id;
+END IF;
+UPDATE "PRODUCTS"
+SET "SHOP_ID" = shop_id
+WHERE "ID" = product_id;
+UPDATE "PRODUCTS"
+SET "CATEGORY_ID" = category_id
+WHERE "ID" = product_id;
 END
