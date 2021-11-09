@@ -1,6 +1,7 @@
 PROCEDURE "add_product"(
     name_of_product NVARCHAR(50),
     descr NVARCHAR(512),
+    price int,
     shop_id int,
     id_of_pr_category_id int
     
@@ -10,8 +11,9 @@ BEGIN
   INSERT INTO "PRODUCTS" (
       "PRODUCT_NAME",
       "DESCRIPTION",
+      "PRODUCT_PRICE",
       "SHOP_ID",
       "PR_CATEGORY_ID" 
     )
-  VALUES(name_of_product, descr, shop_id, id_of_pr_category_id);
+  VALUES(name_of_product, descr, price, shop_id, id_of_pr_category_id);
 END
