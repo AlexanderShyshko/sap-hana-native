@@ -1,0 +1,6 @@
+PROCEDURE "add_order"(id_of_product int, id_of_client int, price int) 
+  LANGUAGE SQLSCRIPT AS 
+BEGIN
+  INSERT INTO "ORDERS" ("PRODUCT_ID", "CLIENT_ID", "TOTAL_PRICE")
+  VALUES (id_of_product, id_of_client, price);
+END

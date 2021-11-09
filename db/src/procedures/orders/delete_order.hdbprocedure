@@ -1,0 +1,6 @@
+PROCEDURE "delete_order"(order_id int) 
+  LANGUAGE SQLSCRIPT AS 
+BEGIN
+  DELETE FROM "ORDERS"
+  WHERE "ID" = order_id;
+END

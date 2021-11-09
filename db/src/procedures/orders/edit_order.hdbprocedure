@@ -1,0 +1,18 @@
+PROCEDURE "edit_order"(
+    order_id int,
+    id_of_product int,
+    id_of_client int,
+    price int
+  ) 
+  LANGUAGE SQLSCRIPT AS 
+BEGIN
+  UPDATE "ORDERS"
+  SET "PRODUCT_ID" = id_of_product
+  WHERE "ID" = order_id;
+  UPDATE "ORDERS"
+  SET "CLIENT_ID" = id_of_client
+  WHERE "ID" = order_id;
+  UPDATE "ORDERS"
+  SET "TOTAL_PRICE" = price
+  WHERE "ID" = order_id;
+END
