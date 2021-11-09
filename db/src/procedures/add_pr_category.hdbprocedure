@@ -1,0 +1,6 @@
+PROCEDURE "add_pr_category"(pr_category_name nvarchar(50)) 
+  LANGUAGE SQLSCRIPT AS 
+BEGIN
+  INSERT INTO "PRODUCT_CATEGORIES" ("CATEGORY_NAME")
+  VALUES (pr_category_name);
+END

@@ -1,0 +1,7 @@
+PROCEDURE "delete_pr_category"(pr_category_id int )
+   LANGUAGE SQLSCRIPT
+    AS
+BEGIN
+    DELETE FROM "PRODUCT_CATEGORIES"
+  WHERE "ID" = pr_category_id;
+END

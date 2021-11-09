@@ -3,7 +3,7 @@ column table "PRODUCTS" (
     "PRODUCT_NAME" NVARCHAR(50) COMMENT 'Product name',
     "DESCRIPTION" NVARCHAR(512) COMMENT 'Product descritpion',
     "SHOP_ID" integer not null COMMENT 'Shop ID',
-    "CATEGORY_ID" integer COMMENT 'Category ID',
+    "PR_CATEGORY_ID" integer COMMENT 'Category ID',
     PRIMARY KEY ("ID")
 )
 COMMENT 'Products'
