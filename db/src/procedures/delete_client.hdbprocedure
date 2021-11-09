@@ -1,0 +1,7 @@
+PROCEDURE "delete_client"( client_id int)
+   LANGUAGE SQLSCRIPT
+    AS
+BEGIN
+   DELETE FROM "CLIENTS"
+  WHERE "ID" = client_id;
+END

@@ -1,0 +1,30 @@
+PROCEDURE "edit_client"(
+    client_id int,
+    client_first_name nvarchar(50),
+    client_last_name nvarchar(50),
+    email nvarchar(50),
+    client_phone_number nvarchar(50)
+  ) 
+  LANGUAGE SQLSCRIPT AS 
+  BEGIN
+IF client_first_name != '' THEN
+  UPDATE "CLIENTS"
+  SET "FIRST_NAME" = client_first_name
+  WHERE "ID" = client_id;
+END IF;
+ IF client_last_name != '' THEN
+  UPDATE "CLIENTS"
+  SET "LAST_NAME" = client_last_name
+  WHERE "ID" = client_id;
+END IF;
+ IF email != '' THEN
+  UPDATE "CLIENTS"
+  SET "CLIENT_EMAIL" = email
+  WHERE "ID" = client_id;
+END IF;
+ IF client_phone_number != '' THEN
+  UPDATE "CLIENTS"
+  SET "PHONE_NUMBER" = client_phone_number
+  WHERE "ID" = client_id;
+END IF;
+END

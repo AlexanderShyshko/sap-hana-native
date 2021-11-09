@@ -1,0 +1,21 @@
+PROCEDURE "add_client"(
+    client_first_name nvarchar(50),
+    client_last_name nvarchar(50),
+    email nvarchar(50),
+    client_phone_number nvarchar(50)
+  ) 
+  LANGUAGE SQLSCRIPT AS 
+BEGIN
+  INSERT INTO "CLIENTS" (
+      "FIRST_NAME",
+      "LAST_NAME",
+      "CLIENT_EMAIL",
+      "PHONE_NUMBER"
+    )
+  VALUES (
+      client_first_name,
+      client_last_name,
+      email,
+      client_phone_number
+    );
+END
