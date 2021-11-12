@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="CV_ORDERS" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" outputViewType="Aggregation" cacheInvalidationPeriod="NONE" enforceSqlExecution="true">
+<descriptions defaultDescription="CV_ORDERS"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="CLIENTS">
+    <resourceUri>CLIENTS</resourceUri>
+  </DataSource>
+  <DataSource id="ORDERS">
+    <resourceUri>ORDERS</resourceUri>
+  </DataSource>
+  <DataSource id="CV_PRODUCTS">
+    <resourceUri>CV_PRODUCTS</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1_1" cardinality="CN_1" joinType="inner" multiJoinNode="Join_1" multiJoinCentralTable="CV_PRODUCTS" multiJoinOrder="Outside In">
+    <viewAttributes>
+      <viewAttribute id="TOTAL_PRICE" aggregationType="sum"/>
+      <viewAttribute id="ID" aggregationType="sum"/>
+      <viewAttribute id="FIRST_NAME"/>
+      <viewAttribute id="LAST_NAME"/>
+      <viewAttribute id="CLIENT_EMAIL"/>
+      <viewAttribute id="PHONE_NUMBER"/>
+      <viewAttribute id="PRODUCT_ID"/>
+      <viewAttribute hidden="true" id="JOIN$ID$CLIENT_ID"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="CLIENTS">
+      <mapping xsi:type="Calculation:AttributeMapping" target="FIRST_NAME" source="FIRST_NAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LAST_NAME" source="LAST_NAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CLIENT_EMAIL" source="CLIENT_EMAIL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PHONE_NUMBER" source="PHONE_NUMBER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$ID$CLIENT_ID" source="ID"/>
+    </input>
+    <input node="ORDERS">
+      <mapping xsi:type="Calculation:AttributeMapping" target="TOTAL_PRICE" source="TOTAL_PRICE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ID" source="ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRODUCT_ID" source="PRODUCT_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$ID$CLIENT_ID" source="CLIENT_ID"/>
+    </input>
+    <joinAttribute name="JOIN$ID$CLIENT_ID"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1_2" cardinality="CN_N" joinType="inner" multiJoinNode="Join_1" multiJoinCentralTable="CV_PRODUCTS" multiJoinOrder="Outside In">
+    <viewAttributes>
+      <viewAttribute id="TOTAL_PRICE" aggregationType="sum"/>
+      <viewAttribute id="ID" aggregationType="sum"/>
+      <viewAttribute id="FIRST_NAME"/>
+      <viewAttribute id="LAST_NAME"/>
+      <viewAttribute id="CLIENT_EMAIL"/>
+      <viewAttribute id="PHONE_NUMBER"/>
+      <viewAttribute id="PRODUCT_ID"/>
+      <viewAttribute id="PRODUCT_NAME"/>
+      <viewAttribute id="DESCRIPTION"/>
+      <viewAttribute id="PRODUCT_PRICE" aggregationType="sum"/>
+      <viewAttribute id="CATEGORY_NAME"/>
+      <viewAttribute id="SHOP_NAME"/>
+      <viewAttribute id="DESCRIPTION_1"/>
+      <viewAttribute hidden="true" id="JOIN$ID$PRODUCT_ID"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="CV_PRODUCTS">
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRODUCT_NAME" source="PRODUCT_NAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPTION" source="DESCRIPTION"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRODUCT_PRICE" source="PRODUCT_PRICE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CATEGORY_NAME" source="CATEGORY_NAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SHOP_NAME" source="SHOP_NAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPTION_1" source="DESCRIPTION_1"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$ID$PRODUCT_ID" source="ID"/>
+    </input>
+    <input node="Join_1_1">
+      <mapping xsi:type="Calculation:AttributeMapping" target="TOTAL_PRICE" source="TOTAL_PRICE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ID" source="ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="FIRST_NAME" source="FIRST_NAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LAST_NAME" source="LAST_NAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CLIENT_EMAIL" source="CLIENT_EMAIL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PHONE_NUMBER" source="PHONE_NUMBER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRODUCT_ID" source="PRODUCT_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$ID$PRODUCT_ID" source="PRODUCT_ID"/>
+    </input>
+    <joinAttribute name="JOIN$ID$PRODUCT_ID"/>
+  </calculationView>
+</calculationViews>
+
+<logicalModel id="Join_1_2">
+  <attributes>
+    <attribute id="ID" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ID"/>
+      <keyMapping columnObjectName="Join_1_2" columnName="ID"/>
+    </attribute>
+    <attribute id="FIRST_NAME" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="FIRST_NAME"/>
+      <keyMapping columnObjectName="Join_1_2" columnName="FIRST_NAME"/>
+    </attribute>
+    <attribute id="LAST_NAME" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="LAST_NAME"/>
+      <keyMapping columnObjectName="Join_1_2" columnName="LAST_NAME"/>
+    </attribute>
+    <attribute id="CLIENT_EMAIL" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CLIENT_EMAIL"/>
+      <keyMapping columnObjectName="Join_1_2" columnName="CLIENT_EMAIL"/>
+    </attribute>
+    <attribute id="PHONE_NUMBER" order="6" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PHONE_NUMBER"/>
+      <keyMapping columnObjectName="Join_1_2" columnName="PHONE_NUMBER"/>
+    </attribute>
+    <attribute id="PRODUCT_ID" order="7" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PRODUCT_ID"/>
+      <keyMapping columnObjectName="Join_1_2" columnName="PRODUCT_ID"/>
+    </attribute>
+    <attribute id="PRODUCT_NAME" order="8" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PRODUCT_NAME"/>
+      <keyMapping columnObjectName="Join_1_2" columnName="PRODUCT_NAME"/>
+    </attribute>
+    <attribute id="DESCRIPTION" order="9" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DESCRIPTION"/>
+      <keyMapping columnObjectName="Join_1_2" columnName="DESCRIPTION"/>
+    </attribute>
+    <attribute id="PRODUCT_PRICE" order="10" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PRODUCT_PRICE"/>
+      <keyMapping columnObjectName="Join_1_2" columnName="PRODUCT_PRICE"/>
+    </attribute>
+    <attribute id="CATEGORY_NAME" order="11" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CATEGORY_NAME"/>
+      <keyMapping columnObjectName="Join_1_2" columnName="CATEGORY_NAME"/>
+    </attribute>
+    <attribute id="SHOP_NAME" order="12" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Shop name"/>
+      <keyMapping columnObjectName="Join_1_2" columnName="SHOP_NAME"/>
+    </attribute>
+    <attribute id="DESCRIPTION_1" order="13" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Shop descritpion"/>
+      <keyMapping columnObjectName="Join_1_2" columnName="DESCRIPTION_1"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures>
+    <measure id="TOTAL_PRICE" order="1" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="TOTAL_PRICE"/>
+      <measureMapping columnObjectName="Join_1_2" columnName="TOTAL_PRICE"/>
+    </measure>
+  </baseMeasures>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+  <localDimensions/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+    
+  
+    <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="-175" y="150"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape modelObjectName="CV_PRODUCTS" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput" multiJoinViewNodeName="Join_1">
+      <upperLeftCorner x="272" y="194"/>
+      <rectangleSize width="184"/>
+    </shape>
+    <shape modelObjectName="CLIENTS" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput" multiJoinViewNodeName="Join_1">
+      <upperLeftCorner x="260" y="14"/>
+      <rectangleSize width="178"/>
+    </shape>
+    <shape modelObjectName="ORDERS" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput" multiJoinViewNodeName="Join_1">
+      <upperLeftCorner x="620" y="30"/>
+      <rectangleSize width="160"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>
