@@ -1,0 +1,16 @@
+PROCEDURE "add_sale"(
+    percent int,
+    d_start_date date,
+    d_end_date date,
+    id_of_product int
+  ) 
+  LANGUAGE SQLSCRIPT AS 
+BEGIN
+  INSERT INTO "SALES" (
+      "DISCOUNT_PERCENT",
+      "DISCOUNT_START_DATE",
+      "DISCOUNT_END_DATE",
+    "PRODUCT_ID"
+  )
+VALUES(percent, d_start_date, d_end_date, id_of_product);
+END

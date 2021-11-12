@@ -27,7 +27,4 @@ WHERE "ID" = product_id;
 UPDATE "PRODUCTS"
 SET "PR_CATEGORY_ID" = id_of_pr_category
 WHERE "ID" = product_id;
-UPDATE "PRODUCTS"
-SET "SALE_ID" = id_of_sale
-WHERE "ID" = product_id;
 END

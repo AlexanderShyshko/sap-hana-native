@@ -5,7 +5,6 @@ column table "PRODUCTS" (
     "PRODUCT_PRICE" int COMMENT 'Product price',
     "SHOP_ID" integer not null COMMENT 'Shop ID',
     "PR_CATEGORY_ID" integer COMMENT 'Category ID',
-    "SALE_ID" int COMMENT 'Sale ID',
     PRIMARY KEY ("ID")
 )
 COMMENT 'Products'
