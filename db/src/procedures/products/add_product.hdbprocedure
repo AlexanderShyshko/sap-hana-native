@@ -3,7 +3,8 @@ PROCEDURE "add_product"(
     descr NVARCHAR(512),
     price int,
     shop_id int,
-    id_of_pr_category_id int
+    id_of_pr_category_id int,
+    id_of_sale int
     
   ) 
   LANGUAGE SQLSCRIPT AS 
@@ -13,7 +14,8 @@ BEGIN
       "DESCRIPTION",
       "PRODUCT_PRICE",
       "SHOP_ID",
-      "PR_CATEGORY_ID" 
+      "PR_CATEGORY_ID",
+      "SALE_ID"
     )
-  VALUES(name_of_product, descr, price, shop_id, id_of_pr_category_id);
+  VALUES(name_of_product, descr, price, shop_id, id_of_pr_category_id, id_of_sale);
 END

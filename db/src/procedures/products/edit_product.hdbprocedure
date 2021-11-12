@@ -4,7 +4,8 @@ PROCEDURE "edit_product"(
     descr NVARCHAR(512),
     price int,
     id_of_shop INT,
-    id_of_pr_category int
+    id_of_pr_category int,
+    id_of_sale int
   ) 
   LANGUAGE SQLSCRIPT AS 
 BEGIN IF name_of_product != '' THEN
@@ -25,5 +26,8 @@ SET "SHOP_ID" = id_of_shop
 WHERE "ID" = product_id;
 UPDATE "PRODUCTS"
 SET "PR_CATEGORY_ID" = id_of_pr_category
+WHERE "ID" = product_id;
+UPDATE "PRODUCTS"
+SET "SALE_ID" = id_of_sale
 WHERE "ID" = product_id;
 END
