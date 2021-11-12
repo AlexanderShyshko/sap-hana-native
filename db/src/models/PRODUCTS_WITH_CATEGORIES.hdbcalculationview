@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="PRODUCTS_WITH_CATEGORIES" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" outputViewType="Aggregation" cacheInvalidationPeriod="NONE" enforceSqlExecution="true">
+<descriptions defaultDescription="PRODUCTS_WITH_CATEGORIES"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="PRODUCTS">
+    <resourceUri>PRODUCTS</resourceUri>
+  </DataSource>
+  <DataSource id="PRODUCT_CATEGORIES">
+    <resourceUri>PRODUCT_CATEGORIES</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1" cardinality="C1_N" joinType="inner">
+    <viewAttributes>
+      <viewAttribute id="ID" aggregationType="sum"/>
+      <viewAttribute id="PRODUCT_NAME"/>
+      <viewAttribute id="DESCRIPTION"/>
+      <viewAttribute id="PRODUCT_PRICE" aggregationType="sum"/>
+      <viewAttribute id="SHOP_ID" aggregationType="sum"/>
+      <viewAttribute id="CATEGORY_NAME"/>
+      <viewAttribute hidden="true" id="JOIN$PR_CATEGORY_ID$ID"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="PRODUCTS">
+      <mapping xsi:type="Calculation:AttributeMapping" target="ID" source="ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRODUCT_NAME" source="PRODUCT_NAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPTION" source="DESCRIPTION"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRODUCT_PRICE" source="PRODUCT_PRICE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SHOP_ID" source="SHOP_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$PR_CATEGORY_ID$ID" source="PR_CATEGORY_ID"/>
+    </input>
+    <input node="PRODUCT_CATEGORIES">
+      <mapping xsi:type="Calculation:AttributeMapping" target="CATEGORY_NAME" source="CATEGORY_NAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$PR_CATEGORY_ID$ID" source="ID"/>
+    </input>
+    <joinAttribute name="JOIN$PR_CATEGORY_ID$ID"/>
+  </calculationView>
+</calculationViews>
+
+<logicalModel id="Join_1">
+  <attributes>
+    <attribute id="ID" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Product ID"/>
+      <keyMapping columnObjectName="Join_1" columnName="ID"/>
+    </attribute>
+    <attribute id="PRODUCT_NAME" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Product name"/>
+      <keyMapping columnObjectName="Join_1" columnName="PRODUCT_NAME"/>
+    </attribute>
+    <attribute id="DESCRIPTION" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Product descritpion"/>
+      <keyMapping columnObjectName="Join_1" columnName="DESCRIPTION"/>
+    </attribute>
+    <attribute id="SHOP_ID" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Shop ID"/>
+      <keyMapping columnObjectName="Join_1" columnName="SHOP_ID"/>
+    </attribute>
+    <attribute id="CATEGORY_NAME" order="6" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Category name"/>
+      <keyMapping columnObjectName="Join_1" columnName="CATEGORY_NAME"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures>
+    <measure id="PRODUCT_PRICE" order="4" aggregationType="sum" engineAggregation="none" measureType="simple">
+      <descriptions defaultDescription="Product price"/>
+      <measureMapping columnObjectName="Join_1" columnName="PRODUCT_PRICE"/>
+    </measure>
+  </baseMeasures>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+  <localDimensions/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="100" y="105"/>
+    
+      <rectangleSize width="160"/>
+    </shape>
+    
+  
+    <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="100" y="207"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape modelObjectName="PRODUCTS" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="19" y="28"/>
+      <rectangleSize width="185"/>
+    </shape>
+    <shape modelObjectName="PRODUCT_CATEGORIES" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="267" y="39"/>
+      <rectangleSize width="208"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>
