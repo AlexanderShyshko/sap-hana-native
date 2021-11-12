@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="CV_SALES" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" outputViewType="Aggregation" cacheInvalidationPeriod="NONE" enforceSqlExecution="true">
+<descriptions defaultDescription="CV_SALES"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="SALES">
+    <resourceUri>SALES</resourceUri>
+  </DataSource>
+  <DataSource id="CV_PRODUCTS">
+    <resourceUri>CV_PRODUCTS</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1" cardinality="C1_N" joinType="inner">
+    <viewAttributes>
+      <viewAttribute id="ID" aggregationType="sum"/>
+      <viewAttribute id="DISCOUNT_PERCENT" aggregationType="sum"/>
+      <viewAttribute id="DISCOUNT_START_DATE"/>
+      <viewAttribute id="DISCOUNT_END_DATE"/>
+      <viewAttribute id="PRODUCT_NAME"/>
+      <viewAttribute id="DESCRIPTION"/>
+      <viewAttribute id="PRODUCT_PRICE" aggregationType="sum"/>
+      <viewAttribute id="CATEGORY_NAME"/>
+      <viewAttribute id="SHOP_NAME"/>
+      <viewAttribute id="DESCRIPTION_1"/>
+      <viewAttribute hidden="true" id="JOIN$PRODUCT_ID$ID"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="SALES">
+      <mapping xsi:type="Calculation:AttributeMapping" target="ID" source="ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DISCOUNT_PERCENT" source="DISCOUNT_PERCENT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DISCOUNT_START_DATE" source="DISCOUNT_START_DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DISCOUNT_END_DATE" source="DISCOUNT_END_DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$PRODUCT_ID$ID" source="PRODUCT_ID"/>
+    </input>
+    <input node="CV_PRODUCTS">
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRODUCT_NAME" source="PRODUCT_NAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPTION" source="DESCRIPTION"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRODUCT_PRICE" source="PRODUCT_PRICE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CATEGORY_NAME" source="CATEGORY_NAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SHOP_NAME" source="SHOP_NAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPTION_1" source="DESCRIPTION_1"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$PRODUCT_ID$ID" source="ID"/>
+    </input>
+    <joinAttribute name="JOIN$PRODUCT_ID$ID"/>
+  </calculationView>
+</calculationViews>
+
+<logicalModel id="Join_1">
+  <attributes>
+    <attribute id="ID" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Sale ID"/>
+      <keyMapping columnObjectName="Join_1" columnName="ID"/>
+    </attribute>
+    <attribute id="DISCOUNT_START_DATE" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Discount start date"/>
+      <keyMapping columnObjectName="Join_1" columnName="DISCOUNT_START_DATE"/>
+    </attribute>
+    <attribute id="DISCOUNT_END_DATE" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Discount end date"/>
+      <keyMapping columnObjectName="Join_1" columnName="DISCOUNT_END_DATE"/>
+    </attribute>
+    <attribute id="PRODUCT_NAME" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Product name"/>
+      <keyMapping columnObjectName="Join_1" columnName="PRODUCT_NAME"/>
+    </attribute>
+    <attribute id="DESCRIPTION" order="6" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Product descritpion"/>
+      <keyMapping columnObjectName="Join_1" columnName="DESCRIPTION"/>
+    </attribute>
+    <attribute id="PRODUCT_PRICE" order="7" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Product price"/>
+      <keyMapping columnObjectName="Join_1" columnName="PRODUCT_PRICE"/>
+    </attribute>
+    <attribute id="CATEGORY_NAME" order="8" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Category name"/>
+      <keyMapping columnObjectName="Join_1" columnName="CATEGORY_NAME"/>
+    </attribute>
+    <attribute id="SHOP_NAME" order="9" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Shop name"/>
+      <keyMapping columnObjectName="Join_1" columnName="SHOP_NAME"/>
+    </attribute>
+    <attribute id="DESCRIPTION_1" order="10" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Shop descritpion"/>
+      <keyMapping columnObjectName="Join_1" columnName="DESCRIPTION_1"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures>
+    <measure id="DISCOUNT_PERCENT" order="2" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="Discount precent"/>
+      <measureMapping columnObjectName="Join_1" columnName="DISCOUNT_PERCENT"/>
+    </measure>
+  </baseMeasures>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+  <localDimensions/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+    
+  
+    <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="100" y="202"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape modelObjectName="SALES" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="219.24072265625"/>
+    </shape>
+    <shape modelObjectName="CV_PRODUCTS" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="184.61328125"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>
