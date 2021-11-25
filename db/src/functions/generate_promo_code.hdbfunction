@@ -1,0 +1,7 @@
+FUNCTION "generate_promo_code"() 
+  RETURNS result varchar(5) 
+  LANGUAGE SQLSCRIPT AS 
+BEGIN
+  SELECT TO_VARCHAR(ROUND((90000)*rand()+10000, 0, ROUND_CEILING)) INTO result
+  FROM dummy;
+END;

@@ -1,0 +1,15 @@
+PROCEDURE "update_all_promo_codes"() 
+  LANGUAGE SQLSCRIPT AS 
+BEGIN
+
+
+DECLARE CURSOR c_cursor FOR
+			 SELECT id, code FROM "PROMO_CODES"; 
+
+
+FOR current_row as c_cursor DO
+UPDATE "PROMO_CODES"
+SET "CODE" = "generate_promo_code"() WHERE id = current_row.id; 
+end for;
+
+END
