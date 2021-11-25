@@ -110,11 +110,11 @@
     </shape>
     <shape modelObjectName="SALES" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
       <upperLeftCorner x="20" y="30"/>
-      <rectangleSize width="219.24072265625"/>
+      <rectangleSize width="219"/>
     </shape>
     <shape modelObjectName="CV_PRODUCTS" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
       <upperLeftCorner x="320" y="30"/>
-      <rectangleSize width="184.61328125"/>
+      <rectangleSize width="184"/>
     </shape>
   </shapes>
 </layout>
