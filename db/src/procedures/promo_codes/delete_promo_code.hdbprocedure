@@ -1,0 +1,7 @@
+PROCEDURE "delete_promo_code"(promo_code_id int )
+   LANGUAGE SQLSCRIPT
+    AS
+BEGIN
+  DELETE FROM "PROMO_CODES"
+  WHERE "ID" = promo_code_id;  
+END

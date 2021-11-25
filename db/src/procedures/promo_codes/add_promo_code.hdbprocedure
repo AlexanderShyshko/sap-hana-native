@@ -1,0 +1,15 @@
+PROCEDURE "add_promo_code"(
+    code NVARCHAR(5),
+    id_of_client int,
+    activation_status int
+    
+  ) 
+  LANGUAGE SQLSCRIPT AS 
+BEGIN
+  INSERT INTO "PROMO_CODES" (
+      "CODE",
+      "CLIENT_ID",
+      "ACTIVATION_STATUS"
+    )
+  VALUES(code, id_of_client, activation_status);
+END
