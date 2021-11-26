@@ -1,0 +1,10 @@
+PROCEDURE "get_client"(client_id int, out fullname NVARCHAR(256))
+   LANGUAGE SQLSCRIPT
+   SQL SECURITY INVOKER
+   
+   READS SQL DATA AS
+BEGIN
+
+fullname = "masterdata":"get_client_full_name"( client_id );
+
+END

@@ -1,0 +1,19 @@
+LIBRARY "masterdata"
+LANGUAGE SQLSCRIPT
+AS
+BEGIN
+
+public function "get_client_full_name"(  IN client_id int )
+RETURNS ex_fullname NVARCHAR(256) AS
+begin 
+
+declare firstname NVARCHAR(50);
+declare lastname NVARCHAR(50);
+select "FIRST_NAME" into firstname from "CLIENTS" where "ID" = client_id;
+select "LAST_NAME" into lastname from "CLIENTS" where "ID" = client_id;
+
+ex_fullname = firstname || ', ' || lastname;
+
+end;
+
+END
