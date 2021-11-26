@@ -4,7 +4,7 @@ PROCEDURE "delete_sale_when_over"()
 BEGIN
 DECLARE curr_date date;
  SELECT CURRENT_DATE into curr_date FROM DUMMY;
+ DELETE FROM "SALES"
+ WHERE "DISCOUNT_END_DATE" <= curr_date;  
 
-DELETE FROM "SALES"
-  WHERE "DISCOUNT_END_DATE" <= curr_date;  
 END

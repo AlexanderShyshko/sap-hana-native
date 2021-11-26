@@ -1,7 +1,8 @@
-PROCEDURE "delete_client"( client_id int)
+PROCEDURE "delete_client"( client_id int, out kek int)
    LANGUAGE SQLSCRIPT
     AS
 BEGIN
    DELETE FROM "CLIENTS"
   WHERE "ID" = client_id;
+  kek := client_id;
 END

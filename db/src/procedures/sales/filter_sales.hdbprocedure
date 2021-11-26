@@ -1,0 +1,12 @@
+PROCEDURE "filter_sales"(in in_sales "SALES", out out_sales "SALES")
+   LANGUAGE SQLSCRIPT
+   READS SQL DATA
+    AS
+BEGIN
+DECLARE curr_date date;
+ SELECT CURRENT_DATE into curr_date FROM DUMMY; 
+ out_sales =  select * FROM "SALES"
+ WHERE "DISCOUNT_END_DATE" <= curr_date;
+
+
+END
