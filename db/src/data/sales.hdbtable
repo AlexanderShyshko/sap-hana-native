@@ -4,6 +4,7 @@ column table "SALES" (
     "DISCOUNT_START_DATE" date COMMENT 'Discount start date',
     "DISCOUNT_END_DATE" date COMMENT 'Discount end date',
     "PRODUCT_ID" int,
+    "SALE_TYPE" varchar(50),
     PRIMARY KEY ("ID")
 )
 COMMENT 'Sales'

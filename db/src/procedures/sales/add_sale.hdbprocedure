@@ -2,7 +2,8 @@ PROCEDURE "add_sale"(
     percent int,
     d_start_date date,
     d_end_date date,
-    id_of_product int
+    id_of_product int,
+    type_of_sale varchar(50)
   ) 
   LANGUAGE SQLSCRIPT AS 
 BEGIN
@@ -10,7 +11,8 @@ BEGIN
       "DISCOUNT_PERCENT",
       "DISCOUNT_START_DATE",
       "DISCOUNT_END_DATE",
-    "PRODUCT_ID"
+    "PRODUCT_ID",
+    "SALE_TYPE"
   )
-VALUES(percent, d_start_date, d_end_date, id_of_product);
+VALUES(percent, d_start_date, d_end_date, id_of_product, type_of_sale);
 END

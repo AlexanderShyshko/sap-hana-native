@@ -3,7 +3,8 @@ PROCEDURE "edit_sale"(
     percent int,
     d_start_date date,
     d_end_date date,
-    id_of_product int
+    id_of_product int,
+    type_of_sale varchar(50)
   ) 
   LANGUAGE SQLSCRIPT AS 
 BEGIN
@@ -21,5 +22,10 @@ WHERE "ID" = sale_id;
 
 UPDATE "SALES"
 SET "PRODUCT_ID" = id_of_product
+WHERE "ID" = sale_id;
+
+
+UPDATE "SALES"
+SET "SALE_TYPE" = type_of_sale
 WHERE "ID" = sale_id;
 END
