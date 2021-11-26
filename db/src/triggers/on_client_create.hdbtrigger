@@ -1,0 +1,24 @@
+TRIGGER "on_client_create"
+  AFTER
+  INSERT
+   ON "CLIENTS" REFERENCING new ROW newrow FOR EACH ROW 
+BEGIN
+  DECLARE client_id int = :newrow."ID";
+  DECLARE audience VARCHAR(50);
+  IF :newrow."AGE" < 18 THEN audience = 'KIDS';
+  INSERT INTO "TARGET_AUDIENCES" ("AUDIENCE_NAME", "CLIENT_ID")
+  VALUES (audience, client_id);
+END IF;
+if :newrow."AGE" >= 18 THEN
+    if :newrow."GENDER" = 'MAN' THEN
+        audience = 'MEN';
+         INSERT INTO "TARGET_AUDIENCES" ("AUDIENCE_NAME", "CLIENT_ID")
+         VALUES (audience, client_id);
+    end if;
+    if :newrow."GENDER" = 'WOMAN' THEN
+    audience = 'WOMEN';
+    INSERT INTO "TARGET_AUDIENCES" ("AUDIENCE_NAME", "CLIENT_ID")
+    VALUES (audience, client_id);
+    end if;
+end if;
+END
