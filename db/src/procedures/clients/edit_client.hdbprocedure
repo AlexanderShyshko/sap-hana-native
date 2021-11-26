@@ -3,7 +3,9 @@ PROCEDURE "edit_client"(
     client_first_name nvarchar(50),
     client_last_name nvarchar(50),
     email nvarchar(50),
-    client_phone_number nvarchar(50)
+    client_phone_number nvarchar(50),
+    client_age int,
+    client_gender varchar(10)
   ) 
   LANGUAGE SQLSCRIPT AS 
   BEGIN
@@ -26,5 +28,15 @@ END IF;
   UPDATE "CLIENTS"
   SET "PHONE_NUMBER" = client_phone_number
   WHERE "ID" = client_id;
+END IF;
+
+UPDATE "CLIENTS"
+SET "AGE" = client_age
+WHERE "ID" = client_id;
+
+IF client_gender != '' THEN
+UPDATE "CLIENTS"
+SET "GENDER" = client_gender
+WHERE "ID" = client_id;
 END IF;
 END

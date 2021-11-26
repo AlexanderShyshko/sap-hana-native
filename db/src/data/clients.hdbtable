@@ -4,6 +4,8 @@ column table "CLIENTS" (
     "LAST_NAME" NVARCHAR(50) COMMENT 'Last name',
     "CLIENT_EMAIL" NVARCHAR(50) COMMENT 'Email',
     "PHONE_NUMBER" NVARCHAR(50) COMMENT 'Phone number',
+    "AGE" int COMMENT 'Age',
+    "GENDER" VARCHAR(10) COMMENT 'Gender', 
     PRIMARY KEY ("ID")
 )
 COMMENT 'Clients'

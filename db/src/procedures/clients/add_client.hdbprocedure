@@ -2,7 +2,9 @@ PROCEDURE "add_client"(
     client_first_name nvarchar(50),
     client_last_name nvarchar(50),
     email nvarchar(50),
-    client_phone_number nvarchar(50)
+    client_phone_number nvarchar(50),
+    client_age int,
+    client_gender varchar(10)
   ) 
   LANGUAGE SQLSCRIPT AS 
 BEGIN
@@ -10,12 +12,16 @@ BEGIN
       "FIRST_NAME",
       "LAST_NAME",
       "CLIENT_EMAIL",
-      "PHONE_NUMBER"
+      "PHONE_NUMBER",
+      "AGE",
+      "GENDER"
     )
   VALUES (
       client_first_name,
       client_last_name,
       email,
-      client_phone_number
+      client_phone_number,
+      client_age ,
+      client_gender 
     );
 END
